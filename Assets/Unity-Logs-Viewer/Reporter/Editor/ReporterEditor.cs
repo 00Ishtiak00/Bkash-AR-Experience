@@ -4,6 +4,7 @@ using UnityEditor.Callbacks;
 
 using System.IO;
 using System.Collections;
+using Unity_Logs_Viewer.Reporter;
 
 
 public class ReporterEditor : Editor

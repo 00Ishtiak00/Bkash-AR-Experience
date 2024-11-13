@@ -1,18 +1,20 @@
-using System;
-using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine;
 
-public class OpenSmartLink : MonoBehaviour
+namespace _Projects.Scripts.DeepLink
 {
-    [DllImport("__Internal")]
-    private static extern void OpenDeepLink(string url);
-
-    public void OpenLink()
+    public class OpenSmartLink : MonoBehaviour
     {
+        [DllImport("__Internal")]
+        private static extern void OpenDeepLink(string url);
+
+        public void OpenLink()
+        {
 #if UNITY_WEBGL && !UNITY_EDITOR
         OpenDeepLink("https://f8uqp.app.goo.gl/smartlink");
 #else
-        Debug.Log("OpenDeepLink is only supported in WebGL builds.");
+            Debug.Log("OpenDeepLink is only supported in WebGL builds.");
 #endif
+        }
     }
 }

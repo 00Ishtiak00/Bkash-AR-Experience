@@ -1,41 +1,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioCacheManager : MonoBehaviour
+namespace _Projects.Scripts.Managers
 {
-    private Dictionary<string, float> clipUsageTimes = new Dictionary<string, float>();
-    private float cacheExpiryTime = 300f; // Cache expiry in seconds
-
-    private void Update()
+    public class AudioCacheManager : MonoBehaviour
     {
-        ClearExpiredCache();
-    }
+        private Dictionary<string, float> clipUsageTimes = new Dictionary<string, float>();
+        private float cacheExpiryTime = 300f; // Cache expiry in seconds
 
-    private void ClearExpiredCache()
-    {
-        float currentTime = Time.time;
-        List<string> clipsToRemove = new List<string>();
-
-        foreach (var kvp in clipUsageTimes)
+        private void Update()
         {
-            if (currentTime - kvp.Value > cacheExpiryTime)
+            ClearExpiredCache();
+        }
+
+        private void ClearExpiredCache()
+        {
+            float currentTime = Time.time;
+            List<string> clipsToRemove = new List<string>();
+
+            foreach (var kvp in clipUsageTimes)
             {
-                clipsToRemove.Add(kvp.Key);
+                if (currentTime - kvp.Value > cacheExpiryTime)
+                {
+                    clipsToRemove.Add(kvp.Key);
+                }
+            }
+
+            foreach (string clipName in clipsToRemove)
+            {
+                if (AudioManager.instance.RemoveAudioClipFromCache(clipName))
+                {
+                    clipUsageTimes.Remove(clipName);
+                    Debug.Log($"Audio clip '{clipName}' removed from cache.");
+                }
             }
         }
 
-        foreach (string clipName in clipsToRemove)
+        public void UpdateClipUsageTime(string clipName)
         {
-            if (AudioManager.Instance.RemoveAudioClipFromCache(clipName))
-            {
-                clipUsageTimes.Remove(clipName);
-                Debug.Log($"Audio clip '{clipName}' removed from cache.");
-            }
+            clipUsageTimes[clipName] = Time.time;
         }
-    }
-
-    public void UpdateClipUsageTime(string clipName)
-    {
-        clipUsageTimes[clipName] = Time.time;
     }
 }

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 564b66fd8e35fe94fa9edf75daaf9395
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 180966
+  packageName: DeviceCameraWebGL
+  packageVersion: 2.4
+  assetPath: Assets/MarksAssets/DeviceCameraWebGL/Scripts/DeviceCameraWebGLPrefab.cs
+  uploadId: 628581

@@ -49,7 +49,7 @@ namespace Unity_Logs_Viewer.Reporter.Test
 		{
 			Application.runInBackground = true;
 
-			reporter = FindObjectOfType(typeof(Reporter)) as Reporter;
+			reporter = FindFirstObjectByType(typeof(Reporter)) as Reporter;
 			Debug.Log("test long text sdf asdfg asdfg sdfgsdfg sdfg sfg" +
 			          "sdfgsdfg sdfg sdf gsdfg sfdg sf gsdfg sdfg asdfg " +
 			          "sdfgsdfg sdfg sdf gsdfg sfdg sf gsdfg sdfg asdfg " +

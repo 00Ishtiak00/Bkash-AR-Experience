@@ -107,7 +107,7 @@
       }
 	  
 	  loadingBar.style.display = "block";
-
+	  
       createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then(ui => {

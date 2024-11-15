@@ -535,23 +535,23 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
-    AFRAME_SRC: 
-    AUTO_START: 
+    AFRAME_SRC: js/aframe.min
+    AUTO_START: true
     BACKGROUND_COLR: 
-    FILTER_BETA: 
-    FILTER_MIN_CF: 
-    IMAGE_TARGET_SRC: 
-    MAX_TRACK: 
-    MINDAR_IMAGE_AFRAME_PROD_SRC: 
-    MINDAR_IMAGE_PROD_SRC: 
-    MISS_TOLERANCE: 
+    FILTER_BETA: 0.001
+    FILTER_MIN_CF: 0.0001
+    IMAGE_TARGET_SRC: Compiled Target/target.mind
+    MAX_TRACK: 1
+    MINDAR_IMAGE_AFRAME_PROD_SRC: js/mindar-image-aframe.prod
+    MINDAR_IMAGE_PROD_SRC: js/mindar-image.prod
+    MISS_TOLERANCE: 5
     NUMBER_TRACK: 2
     PRODUCT_DESCRIPTION: 
-    UI_ERROR: 
-    UI_LOADING: 
-    UI_SCANNING: 
-    UI_SCANNING_ON_TARGET_LOST: 
-    WARMUP_TOLERANCE: 
+    UI_ERROR: yes
+    UI_LOADING: yes
+    UI_SCANNING: yes
+    UI_SCANNING_ON_TARGET_LOST: yes
+    WARMUP_TOLERANCE: 5
   mobileMTRendering:
     Android: 1
     iPhone: 1

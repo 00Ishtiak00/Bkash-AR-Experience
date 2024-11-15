@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2a9c7aa577449174397a3db2fd9a11a4
+guid: 58c41f8092bd1824aad6700878360c50
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -32,9 +32,8 @@ PluginImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 241386
-  packageName: "Augmented Reality WebGL -\u200E\u200E\u200F \u200E\u200E \u200E \u200E
-    \u200E \u200E \u200E \u200E \u200E Image Tracking WebAR"
+  productId: 206516
+  packageName: ScreenshotWebGL
   packageVersion: 1.1
-  assetPath: Assets/MarksAssets/MindAR/Plugins/TransparentBackground/TransparentBackground.jslib
-  uploadId: 645841
+  assetPath: Assets/MarksAssets/ScreenshotWebGL/Plugins/ScreenshotWebGL.jspre
+  uploadId: 553530

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c954cfcad5567b4fa373000a2460c9f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 206516
+  packageName: ScreenshotWebGL
+  packageVersion: 1.1
+  assetPath: Assets/MarksAssets/ScreenshotWebGL/Example/ScreenshotWebGLMaterial.mat
+  uploadId: 553530

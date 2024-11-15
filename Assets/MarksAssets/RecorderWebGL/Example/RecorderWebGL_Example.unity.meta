@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 38318d635ff4af443a088fcee3ead488
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 209191
+  packageName: Recorder WebGL
+  packageVersion: 1.7.1
+  assetPath: Assets/MarksAssets/RecorderWebGL/Example/RecorderWebGL_Example.unity
+  uploadId: 650526

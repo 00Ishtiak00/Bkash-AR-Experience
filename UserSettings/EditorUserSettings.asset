@@ -6,19 +6,19 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     GraphicsSettingsInspector_UserSettings:
-      value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b56361acb72ba5a52a362c3c0ee63201181433fe3e101bf3250b06144ca74c24f1190708e016c213c61a52f91c12cac80fd8edd298e1e4d1fde2cacddeacbcc1fee7eef0e3b6faa69af9ceaeaaec81a6d2c2c8c8c4b2e5dfd5ccd3f8cf
+      value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b07a68ffab74f9ee2a3a30300cea1a11320d0beb1a0c25f7060f494b4cdf1b18f3045e38cb5ad8
       flags: 0
     RecentlyUsedSceneGuid-0:
-      value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
-      flags: 0
-    RecentlyUsedSceneGuid-1:
       value: 015700045c5050585f5b5f7712745e44444e41737c2a77327f7a1b37b7b6623c
       flags: 0
+    RecentlyUsedSceneGuid-1:
+      value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
+      flags: 0
     RecentlyUsedSceneGuid-2:
-      value: 5504055f00010a085d0c5d7a43225d444f4e4878797a76637f7d1962b0e3313a
+      value: 0503035e04505b0955575f2042750b4410154a2b79297e6778791b61e4b7643c
       flags: 0
     RecentlyUsedSceneGuid-3:
-      value: 0503035e04505b0955575f2042750b4410154a2b79297e6778791b61e4b7643c
+      value: 5504055f00010a085d0c5d7a43225d444f4e4878797a76637f7d1962b0e3313a
       flags: 0
     UIToolkit.EnableEventDebugger:
       value: 2550581500

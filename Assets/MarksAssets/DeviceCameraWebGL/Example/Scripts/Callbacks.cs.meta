@@ -9,10 +9,3 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 180966
-  packageName: DeviceCameraWebGL
-  packageVersion: 2.4
-  assetPath: Assets/MarksAssets/DeviceCameraWebGL/Example/Scripts/Callbacks.cs
-  uploadId: 628581

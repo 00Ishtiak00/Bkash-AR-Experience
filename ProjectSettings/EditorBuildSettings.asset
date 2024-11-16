@@ -5,27 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/_Projects/Scenes/AR.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
+  - enabled: 1
     path: Assets/MarksAssets/MindAR/Examples/Scenes/MindAR.unity
     guid: 6519e4c30b183ab49902520324d12ceb
-  - enabled: 0
-    path: Assets/MarksAssets/RecorderWebGL/Example/RecorderWebGL_Example.unity
-    guid: 38318d635ff4af443a088fcee3ead488
-  - enabled: 0
-    path: Assets/MarksAssets/ScreenshotWebGL/Example/ScreenshotWebGL_Example.unity
-    guid: a4cee386480eec24ab1c665b4bf41430
-  - enabled: 0
-    path: Assets/MarksAssets/ShareNSaveWebGL/Example/ShareNSaveWebGL.unity
-    guid: 8b245f035ba952a4484bc902ee851ecb
-  - enabled: 0
-    path: Assets/MarksAssets/DeviceCameraWebGL/Example/Scenes/DeviceCameraWebGL.unity
-    guid: 1c3eebfd9e880334eb280d56ea636130
-  - enabled: 1
-    path: Assets/_Projects/Scenes/BkashARSetup.unity
-    guid: 0c4f1037c243ef040aebc9f12af5fa28
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

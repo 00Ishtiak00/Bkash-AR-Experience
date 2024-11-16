@@ -20,10 +20,3 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 209191
-  packageName: Recorder WebGL
-  packageVersion: 1.7.1
-  assetPath: Assets/MarksAssets/RecorderWebGL/Example/example.wav
-  uploadId: 650526

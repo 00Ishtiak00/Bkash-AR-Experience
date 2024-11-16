@@ -1,8 +1,15 @@
 fileFormatVersion: 2
 guid: cd56cc390e3022c4ebd9db2cbb2516e2
+AssetOrigin:
+  serializedVersion: 1
+  productId: 209191
+  packageName: Recorder WebGL
+  packageVersion: 1.7.1
+  assetPath: Assets/MarksAssets/RecorderWebGL/Plugins/RecorderWebGL2021.jslib
+  uploadId: 650526
 PluginImporter:
   externalObjects: {}
-  serializedVersion: 2
+  serializedVersion: 3
   iconMap: {}
   executionOrder: {}
   defineConstraints: []
@@ -11,29 +18,47 @@ PluginImporter:
   isExplicitlyReferenced: 0
   validateReferences: 1
   platformData:
-  - first:
-      Any: 
-    second:
-      enabled: 0
-      settings: {}
-  - first:
-      Editor: Editor
-    second:
+    Android:
       enabled: 0
       settings:
+        AndroidLibraryDependee: UnityLibrary
+        AndroidSharedLibraryType: Executable
+        CPU: ARMv7
+    Any:
+      enabled: 0
+      settings:
+        Exclude Android: 1
+        Exclude Editor: 0
+        Exclude Linux64: 1
+        Exclude OSXUniversal: 1
+        Exclude WebGL: 0
+        Exclude Win: 1
+        Exclude Win64: 1
+    Editor:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
         DefaultValueInitialized: true
-  - first:
-      WebGL: WebGL
-    second:
+        OS: AnyOS
+    Linux64:
+      enabled: 0
+      settings:
+        CPU: x86_64
+    OSXUniversal:
+      enabled: 0
+      settings:
+        CPU: None
+    WebGL:
       enabled: 1
       settings: {}
+    Win:
+      enabled: 0
+      settings:
+        CPU: x86
+    Win64:
+      enabled: 0
+      settings:
+        CPU: None
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 209191
-  packageName: Recorder WebGL
-  packageVersion: 1.7.1
-  assetPath: Assets/MarksAssets/RecorderWebGL/Plugins/RecorderWebGL2021.jslib
-  uploadId: 650526

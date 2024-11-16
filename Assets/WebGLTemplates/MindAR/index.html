@@ -8,7 +8,32 @@
 	<script src="{{{ MINDAR_IMAGE_PROD_SRC ? MINDAR_IMAGE_PROD_SRC : 'js/mindar-image.prod'}}}"></script>
 	<script src="{{{ AFRAME_SRC ? AFRAME_SRC : 'js/aframe.min' }}}"></script>
 	<script src="{{{ MINDAR_IMAGE_AFRAME_PROD_SRC ? MINDAR_IMAGE_AFRAME_PROD_SRC : 'js/mindar-image-aframe.prod' }}}"></script>
-	<style>.tmpHidden {display: none;}</style>
+	<style>.tmpHidden {display: none;}
+		.message-panel {
+            position: fixed;
+            top: -1000px; /* Move the panel off-screen */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: top 0.5s;
+            z-index: 1000;
+        }
+        .message-panel.show {
+            top: 20px;/* Bring the panel into view */
+        }
+
+		/* .message-panel button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        } */
+
+	</style>
 	<!-- finish mindar files -->
 	<script src="Build/{{{ LOADER_FILENAME }}}"></script>
   </head>
@@ -22,12 +47,20 @@
 			</div>
 		</div>
 	</div>
-	
+
+	 <!-- Message panel -->
+	 <div id="message-panel" class="message-panel">
+        Webcam is not available. Permission is required.
+        <br>Please reset the camera permissions in your browser settings and reload the page.
+        <!-- <button onclick="window.location.reload();">Reload</button> -->
+    </div>
+
     <script>
 	  var container = document.querySelector("#unity-container");
 	  var canvas = document.querySelector("#unity-canvas");
 	  var loadingBar = document.querySelector("#unity-loading-bar");
 	  var progressBarFull = document.querySelector("#unity-progress-bar-full");
+	  var messagePanel = document.querySelector("#message-panel");
 	  
 	  /*mindar code*/
 	  var mindARStr = "<a-scene id='MindAR-scene' mindar-image='imageTargetSrc: {{{ IMAGE_TARGET_SRC ? IMAGE_TARGET_SRC : 'Compiled Target/target.mind'}}}; autoStart: {{{ AUTO_START ? AUTO_START : true }}}; maxTrack: {{{ MAX_TRACK ? MAX_TRACK : 1 }}}; numberTrack: {{{ NUMBER_TRACK ? NUMBER_TRACK : '1' }}}; uiError:{{{ UI_ERROR ? UI_ERROR : 'yes' }}}; uiLoading:{{{ UI_LOADING ? UI_LOADING : 'yes' }}}; uiScanning:{{{ UI_SCANNING ? UI_SCANNING : 'yes' }}}; uiScanningOnTargetLost: {{{ UI_SCANNING_ON_TARGET_LOST ? UI_SCANNING_ON_TARGET_LOST : 'yes' }}}; filterMinCF: {{{ FILTER_MIN_CF ? FILTER_MIN_CF : '0.0001' }}}; filterBeta: {{{ FILTER_BETA ? FILTER_BETA : '0.001' }}}; warmupTolerance: {{{ WARMUP_TOLERANCE ? WARMUP_TOLERANCE : '5'}}}; missTolerance: {{{ MISS_TOLERANCE ? MISS_TOLERANCE : '5'}}};' color-space='sRGB' renderer='colorManagement: true, physicallyCorrectLights' vr-mode-ui='enabled: false' device-orientation-permission-ui='enabled: false'>\n\t<a-camera position='0 0 0' look-controls='enabled: false'></a-camera>\n";
@@ -108,18 +141,59 @@
 	  
 	  loadingBar.style.display = "block";
 
-      createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then(ui => {
-			loadingBar.style.display = "none";
+	  function requestCameraPermission() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    // Permission granted
+                    initializeUnity();
+                })
+                .catch(function(err) {
+                    // Permission denied
+                    console.error("Camera permission denied:", err);
+                    if (!window.location.search.includes('retry')) {
+                        window.location.search = '?retry=1'; // Reload the page to ask for permission again
+                    } else {
+                        // Show message panel
+                        messagePanel.classList.add('show');
+						// setTimeout(() => {
+                        //     window.location.reload(); // Reload the page to ask for permission again
+                        // }, 3000); // Wait for 3 seconds before reloading
+                    }
+				});
+        }
+
+        function initializeUnity() {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then(ui => {
+                loadingBar.style.display = "none";
+                
+                /*mindar code*/
+                canvas.style.background = "transparent";
+                uiScanning.classList?.remove('tmpHidden');
+                uiLoading.classList?.remove('tmpHidden');
+                /*finish mindar code*/
+            });
+        }
+		// Call the function to request camera permission
+        if (window.location.search.includes('retry')) {
+            requestCameraPermission();
+        } else {
+            window.location.search = '?retry=1';
+        }
+
+    //   createUnityInstance(canvas, config, (progress) => {
+    //       progressBarFull.style.width = 100 * progress + "%";
+    //     }).then(ui => {
+	// 		loadingBar.style.display = "none";
 			
-			/*mindar code*/
-			canvas.style.background = "transparent";
-			uiScanning.classList?.remove('tmpHidden');
-			uiLoading.classList?.remove('tmpHidden');
-			/*finish mindar code*/
+	// 		/*mindar code*/
+	// 		canvas.style.background = "transparent";
+	// 		uiScanning.classList?.remove('tmpHidden');
+	// 		uiLoading.classList?.remove('tmpHidden');
+	// 		/*finish mindar code*/
 			
-	  });
+	//   });
     </script>
   </body>
 </html>

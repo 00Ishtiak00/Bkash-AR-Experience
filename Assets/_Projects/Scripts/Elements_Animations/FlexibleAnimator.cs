@@ -11,6 +11,7 @@ public class FlexibleAnimator : MonoBehaviour
         AnimateSprite,
         Floating,
         LeftRight,
+        ZAxisRotation, // New animation type
         Both
     }
 
@@ -28,9 +29,13 @@ public class FlexibleAnimator : MonoBehaviour
     public float floatDuration = 1f;     // Time for one up-and-down float cycle
     
     [Header("LeftRight Animation Settings")]
-    public Transform leftRightTarget;        // Reference to the Transform to float
-    public float leftRightDistance = 10f;    // Distance to float on Y-axis
-    public float leftRightDuration = 1f;     // Time for one up-and-down float cycle
+    public Transform leftRightTarget;        // Reference to the Transform to move
+    public float leftRightDistance = 10f;    // Distance to move on the X-axis
+    public float leftRightDuration = 1f;     // Time for one left-right cycle
+
+    [Header("Z-Axis Rotation Settings")]
+    public Transform[] rotationTargets;    // Array of GameObjects to rotate
+    public float rotationSpeed = 180f;     // Rotation speed (degrees per second)
 
     private void Start()
     {
@@ -48,6 +53,11 @@ public class FlexibleAnimator : MonoBehaviour
         if (animationType == AnimationType.LeftRight || animationType == AnimationType.Both)
         {
             AnimateLeftWrite();
+        }
+
+        if (animationType == AnimationType.ZAxisRotation)
+        {
+            AnimateZAxisRotation();
         }
     }
 
@@ -86,5 +96,21 @@ public class FlexibleAnimator : MonoBehaviour
         leftRightTarget.DORotate(new Vector3(0, 0, leftRightDistance), leftRightDuration, RotateMode.LocalAxisAdd)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo); // Rotate back and forth in a Yoyo loop
+    }
+
+    private void AnimateZAxisRotation()
+    {
+        if (rotationTargets == null || rotationTargets.Length == 0) return;
+
+        foreach (Transform target in rotationTargets)
+        {
+            if (target != null)
+            {
+                // Apply a continuous rotation on the Z-axis
+                target.DORotate(new Vector3(0, 0, 360), 360f / rotationSpeed, RotateMode.LocalAxisAdd)
+                    .SetEase(Ease.Linear)
+                    .SetLoops(-1, LoopType.Restart); // Continuous rotation
+            }
+        }
     }
 }

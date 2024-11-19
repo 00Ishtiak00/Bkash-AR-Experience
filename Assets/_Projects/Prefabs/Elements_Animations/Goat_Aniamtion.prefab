@@ -174,10 +174,10 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7086770474584642226}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1768725252200246286}
   - {fileID: 1461232300672660811}
@@ -205,8 +205,10 @@ MonoBehaviour:
   sprites: []
   animationDuration: 1
   floatTarget: {fileID: 0}
-  floatDistance: 10
+  floatDistance: 15
   floatDuration: 1
   leftRightTarget: {fileID: 1461232300672660811}
   leftRightDistance: 5
   leftRightDuration: 1
+  rotationTargets: []
+  rotationSpeed: 180

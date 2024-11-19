@@ -131,7 +131,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 230805c8808b6b543bea9056b027cf90, type: 3}
   - {fileID: 21300000, guid: b53fa8d8407f3f049a73896db0ffc73e, type: 3}
   - {fileID: 21300000, guid: 5f04b650134f7cf4a95d780b83ef92fe, type: 3}
-  - {fileID: 21300000, guid: 8183fb273db47084a90c515631715b2a, type: 3}
   animationDuration: 1
   floatTarget: {fileID: 0}
   floatDistance: 10
@@ -139,6 +138,8 @@ MonoBehaviour:
   leftRightTarget: {fileID: 0}
   leftRightDistance: 10
   leftRightDuration: 1
+  rotationTargets: []
+  rotationSpeed: 180
 --- !u!1 &6826955347444570390
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,9 +22,15 @@ public class WorldCanvasButtonManager : MonoBehaviour
         }
 
         // Start activating buttons randomly
-        StartCoroutine(ActivateButtonsRandomly());
+        //StartCoroutine(ActivateButtonsRandomly());
     }
 
+    public void BringButtonForward()
+    {
+        // Start activating buttons randomly
+        StartCoroutine(ActivateButtonsRandomly());
+    }
+    
     private IEnumerator ActivateButtonsRandomly()
     {
         while (inactiveButtons.Count > 0)

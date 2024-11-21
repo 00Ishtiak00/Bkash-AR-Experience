@@ -99,7 +99,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4706677043595510633}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
@@ -129,7 +129,6 @@ MonoBehaviour:
   imageComponent: {fileID: 2684590200938283677}
   sprites:
   - {fileID: 21300000, guid: 42da2a60e358ff14c90d830f52c59c0f, type: 3}
-  - {fileID: 21300000, guid: 0e6abef94bc9b8945bfdb262a2245da6, type: 3}
   - {fileID: 21300000, guid: 569e671de535d3447ab29cb0012b2651, type: 3}
   - {fileID: 21300000, guid: ebfb13695bc48f7479c034050ecc6340, type: 3}
   animationDuration: 1

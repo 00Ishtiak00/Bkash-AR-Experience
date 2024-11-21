@@ -1376,7 +1376,6 @@ MonoBehaviour:
   imageComponent: {fileID: 445199648016089688}
   sprites:
   - {fileID: 21300000, guid: 42da2a60e358ff14c90d830f52c59c0f, type: 3}
-  - {fileID: 21300000, guid: 0e6abef94bc9b8945bfdb262a2245da6, type: 3}
   - {fileID: 21300000, guid: 569e671de535d3447ab29cb0012b2651, type: 3}
   - {fileID: 21300000, guid: ebfb13695bc48f7479c034050ecc6340, type: 3}
   animationDuration: 1
@@ -11357,7 +11356,7 @@ Transform:
   m_GameObject: {fileID: 6005828148697472162}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 47, y: -13, z: 8}
+  m_LocalPosition: {x: 47, y: -13, z: 90}
   m_LocalScale: {x: 4600, y: 4600, z: 4600}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13318,7 +13317,6 @@ MonoBehaviour:
   imageComponent: {fileID: 2725829823302819447}
   sprites:
   - {fileID: 21300000, guid: da74acadea385f04daa7ec5c78c15f4c, type: 3}
-  - {fileID: 21300000, guid: d9007f606db095e479f8c91477391fe4, type: 3}
   - {fileID: 21300000, guid: bfd38b7732279084091b29af397594cb, type: 3}
   - {fileID: 21300000, guid: 83d25b215fe079344af70ae09a2084bd, type: 3}
   - {fileID: 21300000, guid: a45cc0290c9b55d4f8a36edf51b33ba9, type: 3}

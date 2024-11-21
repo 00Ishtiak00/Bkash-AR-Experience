@@ -11,18 +11,17 @@ public class WorldCanvasButtonManager : MonoBehaviour
     public float animationDuration = 0.5f; // Duration for scale animation
 
     private List<GameObject> inactiveButtons = new List<GameObject>();
+    private Dictionary<GameObject, Vector3> originalScales = new Dictionary<GameObject, Vector3>();
 
     private void Start()
     {
-        // Deactivate all buttons initially and populate inactive list
+        // Deactivate all buttons initially, store original scales, and populate inactive list
         foreach (var button in buttons)
         {
+            originalScales[button] = button.transform.localScale; // Store original scale
             button.SetActive(false); // Ensure all buttons start inactive
             inactiveButtons.Add(button);
         }
-
-        // Start activating buttons randomly
-        //StartCoroutine(ActivateButtonsRandomly());
     }
 
     public void BringButtonForward()
@@ -55,6 +54,6 @@ public class WorldCanvasButtonManager : MonoBehaviour
 
         // Animate scale-in with DoTween
         button.transform.localScale = Vector3.zero; // Reset scale
-        button.transform.DOScale(Vector3.one, animationDuration).SetEase(Ease.OutBack);
+        button.transform.DOScale(originalScales[button], animationDuration).SetEase(Ease.OutBack);
     }
 }

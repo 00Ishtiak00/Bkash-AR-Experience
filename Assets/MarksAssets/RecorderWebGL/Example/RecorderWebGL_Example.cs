@@ -5,7 +5,7 @@ using status = MarksAssets.RecorderWebGL.RecorderWebGL.status;
 using System.Collections;
 using static MarksAssets.RecorderWebGL.RecorderWebGL;
 using UnityEngine.EventSystems;
-//using MarksAssets.ShareNSaveWebGL;//if using my https://assetstore.unity.com/packages/tools/integration/sharensavewebgl-181122 asset as well.
+using MarksAssets.ShareNSaveWebGL;//if using my https://assetstore.unity.com/packages/tools/integration/sharensavewebgl-181122 asset as well.
 
 public class RecorderWebGL_Example : MonoBehaviour {
 
@@ -13,7 +13,7 @@ public class RecorderWebGL_Example : MonoBehaviour {
     public Text RecordedText, StatusText;
     public int recordForNSeconds = -1;//-1 means that it won't use timer. So it will stop recording when tapping on stop button. Any value >= 0 will use timer. Then you'd need to tap and hold the start button, and wait for the timer or release the button earlier to stop the recording before the time's up.
 
-    //private byte[] bytes;//used if recorded as byte array
+    private byte[] bytes;//used if recorded as byte array
 
     private Coroutine timerRoutine = null;
     private MediaRecorderOptions mro = new MediaRecorderOptions("video/webm;codecs=vp8,opus");//This is to avoid creating .mkv files on browsers that can create .webm, as it seems some video players have trouble with the generated .mkv and not detect the full length of the video.
@@ -42,8 +42,14 @@ public class RecorderWebGL_Example : MonoBehaviour {
 
     public void StartRecording() {
         RecorderWebGL.Start(startClbk);
+        StartCoroutine(StopRecordingAfterDelay(30f)); // Start the coroutine to stop recording after 30 seconds
     }
 
+    private IEnumerator StopRecordingAfterDelay(float delay) {
+        yield return new WaitForSeconds(delay);
+        StopRecording();
+    }
+    
     public void CreateRecordingMicrophoneIngameAudio() {
         RecorderWebGL.CreateMediaRecorder(createMediaRecorderCallback, mro);
     }
@@ -63,7 +69,8 @@ public class RecorderWebGL_Example : MonoBehaviour {
     public void StopRecording() {
         if (RecorderWebGL.GetState() != RecordingState.stopped) {//this is important to record on a timer.
             if (timerRoutine != null) StopCoroutine(timerRoutine);//in case the user released the button before the time's up, stop timer(coroutine) prematurely.
-            RecorderWebGL.Stop(stopcallback);
+            //RecorderWebGL.Stop(stopcallback);
+            RecorderWebGL.Stop(stopcallbackByteArr);
         }
     }
 
@@ -80,16 +87,58 @@ public class RecorderWebGL_Example : MonoBehaviour {
     }
 
     public void Download() {
-        RecorderWebGL.Save();
+        //RecorderWebGL.Save();
 
         //if you have my ShareNSaveWebGL asset and recorded as a byte array: https://assetstore.unity.com/packages/tools/integration/sharensavewebgl-181122
-        //ShareNSaveWebGL.Save(bytes, "video/mp4");
+        ShareNSaveWebGL.Save(bytes, "video/mp4");
+        //ShareNSaveWebGL.Save(blobPropertyPath: "yourBlobPropertyPath");
+        share();
+    }
+    
+    public void share() {
+        if (bytes != null) {
+            // Check if sharing is supported
+            MarksAssets.ShareNSaveWebGL.ShareNSaveWebGL.status shareStatus = ShareNSaveWebGL.CanShare(bytes, "video/webm", "recorded_video.webm");
+
+            if (shareStatus == MarksAssets.ShareNSaveWebGL.ShareNSaveWebGL.status.Success) {
+                Debug.Log("Sharing supported. Proceeding to share...");
+            
+                // Share the video file
+                ShareNSaveWebGL.Share(callback, bytes, "video/webm", "recorded_video.webm");
+            } else {
+                Debug.LogError($"Cannot share: {shareStatus}");
+            }
+        } else {
+            Debug.LogError("No recorded video available to share.");
+        }
+    }
+
+// Callback to handle the share result
+    private void callback(MarksAssets.ShareNSaveWebGL.ShareNSaveWebGL.status status) {
+        if (status == MarksAssets.ShareNSaveWebGL.ShareNSaveWebGL.status.Success) {
+            Debug.Log("Video shared successfully!");
+        } else {
+            Debug.LogError($"Failed to share video: {status}");
+        }
     }
 
     private void startClbk() {
         if (recordForNSeconds < 0) {//don't record with timer. Stop recording with button.
             RecordedText.text = "";
-            PauseBtn.SetActive(true);
+            //PauseBtn.SetActive(true);
+            PauseBtn.SetActive(false);
+            
+            // Set StopBtn transparency to 0
+            Image stopBtnImage = StopBtn.GetComponent<Image>();
+            if (stopBtnImage != null) {
+                Color color = stopBtnImage.color;
+                color.a = 0f;
+                stopBtnImage.color = color;
+            }
+            /*// Set StopBtn transparency to 0
+            CanvasRenderer stopBtnRenderer = StopBtn.GetComponent<CanvasRenderer>();
+            stopBtnRenderer.SetAlpha(0f);*/
+            
             StopBtn.SetActive(true);
             CreateRecordingMicrophoneIngameAudioBtn.SetActive(false);
             CreateRecordingMicrophoneBtn.SetActive(false);
@@ -118,7 +167,7 @@ public class RecorderWebGL_Example : MonoBehaviour {
         StartBtn.SetActive(true);
 		
 	}
-    private void stopcallback() {
+    /*private void stopcallback() {
         StartBtn.SetActive(true);
         CreateRecordingMicrophoneIngameAudioBtn.SetActive(true);
         CreateRecordingMicrophoneBtn.SetActive(true);
@@ -130,9 +179,9 @@ public class RecorderWebGL_Example : MonoBehaviour {
         } else {
             RecordedText.text = "Recording failed";
         }
-    }
+    }*/
 
-    /*private void stopcallbackByteArr(byte[] bytes, int size) {
+    private void stopcallbackByteArr(byte[] bytes, int size) {
         Debug.Log("==RECORDED AS BYTE ARRAY==");
         Debug.Log("SIZE: " + size);
 
@@ -149,7 +198,7 @@ public class RecorderWebGL_Example : MonoBehaviour {
         } else {
             RecordedText.text = "Recording failed";
         }
-    }*/
+    }
 
    
 }

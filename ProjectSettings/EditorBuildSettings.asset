@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/MarksAssets/MindAR/Examples/Scenes/MindAR.unity
     guid: 6519e4c30b183ab49902520324d12ceb
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Projects/Scenes/Animation_Scene.unity
     guid: f278ae22893b2644fb2a5a8750f2f70d
+  - enabled: 0
+    path: Assets/MarksAssets/ShareNSaveWebGL/Example/ShareNSaveWebGL.unity
+    guid: 8b245f035ba952a4484bc902ee851ecb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

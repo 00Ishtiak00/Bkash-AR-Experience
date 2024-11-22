@@ -40,6 +40,8 @@ public class CustomRecorderAndScreenshot : MonoBehaviour
         RecorderWebGL.CreateMediaRecorder(OnCreateRecorder, mediaRecorderOptions, false, true); // In-game audio
         recordButton.gameObject.SetActive(false);
         stopButton.gameObject.SetActive(true);
+        SetButtonTransparency(stopButton, 0.5f); // Set stop button transparency to 50%
+        DisableButtonsDuringAction(true);       // Disable Share and Screenshot buttons
         statusText.text = "Recording started...";
     }
 
@@ -47,7 +49,9 @@ public class CustomRecorderAndScreenshot : MonoBehaviour
     {
         RecorderWebGL.Stop(OnRecordingStopped);
         stopButton.gameObject.SetActive(false);
+        SetButtonTransparency(stopButton, 1f); // Reset stop button transparency
         recordButton.gameObject.SetActive(true);
+        EnableButtonsAfterAction();
         statusText.text = "Recording stopped.";
     }
 
@@ -80,9 +84,14 @@ public class CustomRecorderAndScreenshot : MonoBehaviour
 
     private IEnumerator CaptureScreenshotCoroutine()
     {
-        yield return new WaitForEndOfFrame();
+        DisableButtonsDuringAction(true);      // Disable Stop and Share buttons
+        SetButtonTransparency(screenshotButton, 0f); // Set screenshot button transparency to 0
+        yield return new WaitForSeconds(1f);  // Wait 1 second
+
         screenshotTexture = ScreenCapture.CaptureScreenshotAsTexture();
         screenshotFile = screenshotTexture.EncodeToPNG();
+        SetButtonTransparency(screenshotButton, 1f); // Reset screenshot button transparency
+        EnableButtonsAfterAction();
         statusText.text = "Screenshot captured.";
         shareButton.gameObject.SetActive(true); // Allow sharing after screenshot
     }
@@ -140,6 +149,36 @@ public class CustomRecorderAndScreenshot : MonoBehaviour
         else
         {
             statusText.text = $"Share failed: {shareStatus}";
+        }
+    }
+    #endregion
+
+    #region Helper Methods
+    private void DisableButtonsDuringAction(bool includeScreenshot)
+    {
+        shareButton.interactable = false;
+        stopButton.interactable = false;
+        if (includeScreenshot)
+        {
+            screenshotButton.interactable = false;
+        }
+    }
+
+    private void EnableButtonsAfterAction()
+    {
+        shareButton.interactable = true;
+        stopButton.interactable = true;
+        screenshotButton.interactable = true;
+    }
+
+    private void SetButtonTransparency(Button button, float alpha)
+    {
+        Image buttonImage = button.GetComponent<Image>();
+        if (buttonImage != null)
+        {
+            Color color = buttonImage.color;
+            color.a = alpha;
+            buttonImage.color = color;
         }
     }
     #endregion

@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -12,21 +13,27 @@ public class CanvasDragZoom : MonoBehaviour
     [Header("Drag Settings")]
     [SerializeField] private float dragSpeed = 0.005f; // Drag multiplier
     [SerializeField] private float dragSmoothing = 0.25f; // Smoothing time for drag
-
-    private Camera mainCamera;
-    private Vector3 targetPosition; // Target position for smooth drag
+    [SerializeField] private Vector2 defaultPosition;
+    [SerializeField] private float maxX;
+    [SerializeField] private float maxY;
+    
+    private Vector2 targetPosition; // Target position for smooth drag
     private Vector3 targetScale;    // Target scale for smooth zoom
 
-    private bool isTouchSupported;
+    [SerializeField] private bool isTouchSupported;
     private float previousPinchDistance; // Tracks the previous pinch distance
 
     private void Start()
     {
-        mainCamera = Camera.main;
         targetPosition = transform.position;
         targetScale = transform.localScale;
 
         isTouchSupported = Input.touchSupported;
+    }
+
+    private void OnEnable()
+    {
+        defaultPosition = GetComponent<RectTransform>().position;
     }
 
     private void Update()
@@ -52,11 +59,13 @@ public class CanvasDragZoom : MonoBehaviour
             if (touch.phase == TouchPhase.Moved)
             {
                 // Calculate delta and invert direction
-                Vector3 delta = new Vector3(-touch.deltaPosition.x, -touch.deltaPosition.y, 0) * dragSpeed;
+                Vector2 delta = new Vector2(-touch.deltaPosition.x, -touch.deltaPosition.y) * dragSpeed;
                 targetPosition += delta;
+                targetPosition.x = Mathf.Clamp(targetPosition.x, defaultPosition.x - maxX, defaultPosition.x + maxX);
+                targetPosition.y = Mathf.Clamp(targetPosition.y, defaultPosition.y - maxY, defaultPosition.y + maxY);
             }
         }
-
+        
         // Smoothly move towards the target position
         transform.DOMove(targetPosition, dragSmoothing).SetEase(Ease.OutQuad);
     }
@@ -68,7 +77,9 @@ public class CanvasDragZoom : MonoBehaviour
             // Get mouse delta and invert direction
             float deltaX = -Input.GetAxis("Mouse X") * dragSpeed;
             float deltaY = -Input.GetAxis("Mouse Y") * dragSpeed;
-            targetPosition += new Vector3(deltaX, deltaY, 0);
+            targetPosition += new Vector2(deltaX, deltaY);
+            targetPosition.x = Mathf.Clamp(targetPosition.x, defaultPosition.x - maxX, defaultPosition.x + maxX);
+            targetPosition.y = Mathf.Clamp(targetPosition.y, defaultPosition.y - maxY, defaultPosition.y + maxY);
         }
 
         // Smoothly move towards the target position

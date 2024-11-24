@@ -40,7 +40,7 @@ public class CustomRecorderAndScreenshot : MonoBehaviour
         RecorderWebGL.CreateMediaRecorder(OnCreateRecorder, mediaRecorderOptions, false, true); // In-game audio
         recordButton.gameObject.SetActive(false);
         stopButton.gameObject.SetActive(true);
-        SetButtonTransparency(stopButton, 0.5f); // Set stop button transparency to 50%
+        //SetButtonTransparency(stopButton, 0.5f); // Set stop button transparency to 50%
         DisableButtonsDuringAction(true);       // Disable Share and Screenshot buttons
         statusText.text = "Recording started...";
     }

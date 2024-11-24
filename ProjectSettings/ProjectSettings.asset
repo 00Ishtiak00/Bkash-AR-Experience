@@ -545,7 +545,7 @@ PlayerSettings:
     MINDAR_IMAGE_AFRAME_PROD_SRC: js/mindar-image-aframe.prod
     MINDAR_IMAGE_PROD_SRC: js/mindar-image.prod
     MISS_TOLERANCE: 5
-    NUMBER_TRACK: 2
+    NUMBER_TRACK: 1
     PRODUCT_DESCRIPTION: 
     UI_ERROR: yes
     UI_LOADING: yes

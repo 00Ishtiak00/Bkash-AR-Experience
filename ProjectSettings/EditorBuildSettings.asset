@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MarksAssets/ShareNSaveWebGL/Example/ShareNSaveWebGL.unity
     guid: 8b245f035ba952a4484bc902ee851ecb
+  - enabled: 0
+    path: Assets/MarksAssets/MindAR/Examples/Scenes/MindAR Backup.unity
+    guid: 141ea55c76accd147be042a0fa125d5a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -20,7 +20,7 @@ public class TransformTweener : MonoBehaviour
         if (targetTransform != null)
         {
             // Tween only the Z-axis
-            targetTransform.DOMoveZ(targetZPosition, duration).SetEase(easeType).OnComplete(WorldCanvasButtonManager.BringButtonForward);
+            targetTransform.DOMoveZ(targetZPosition, duration).SetEase(easeType).OnComplete(WorldCanvasButtonManager.BringButtonsForward);
         }
         else
         {

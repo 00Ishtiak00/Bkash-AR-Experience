@@ -64,10 +64,9 @@ public class CanvasDragZoom : MonoBehaviour
                 targetPosition.x = Mathf.Clamp(targetPosition.x, defaultPosition.x - maxX, defaultPosition.x + maxX);
                 targetPosition.y = Mathf.Clamp(targetPosition.y, defaultPosition.y - maxY, defaultPosition.y + maxY);
             }
+            // Smoothly move towards the target position
+            transform.DOMove(targetPosition, dragSmoothing).SetEase(Ease.OutQuad);
         }
-        
-        // Smoothly move towards the target position
-        transform.DOMove(targetPosition, dragSmoothing).SetEase(Ease.OutQuad);
     }
 
     private void HandleMouseDrag()
@@ -80,10 +79,10 @@ public class CanvasDragZoom : MonoBehaviour
             targetPosition += new Vector2(deltaX, deltaY);
             targetPosition.x = Mathf.Clamp(targetPosition.x, defaultPosition.x - maxX, defaultPosition.x + maxX);
             targetPosition.y = Mathf.Clamp(targetPosition.y, defaultPosition.y - maxY, defaultPosition.y + maxY);
+            
+            // Smoothly move towards the target position
+            transform.DOMove(targetPosition, dragSmoothing).SetEase(Ease.OutQuad);
         }
-
-        // Smoothly move towards the target position
-        transform.DOMove(targetPosition, dragSmoothing).SetEase(Ease.OutQuad);
     }
 
     private void HandlePinchToZoom()
@@ -112,15 +111,15 @@ public class CanvasDragZoom : MonoBehaviour
                 // Update the previous pinch distance
                 previousPinchDistance = currentPinchDistance;
             }
+            
+            // Smoothly scale towards the target scale
+            transform.DOScale(targetScale, zoomSmoothing).SetEase(Ease.OutQuad);
         }
         else
         {
             // Reset the pinch distance when fingers are lifted
             previousPinchDistance = 0;
         }
-
-        // Smoothly scale towards the target scale
-        transform.DOScale(targetScale, zoomSmoothing).SetEase(Ease.OutQuad);
     }
 
     private void HandleMouseZoom()
@@ -128,10 +127,10 @@ public class CanvasDragZoom : MonoBehaviour
         if (Input.mouseScrollDelta.y != 0) // Mouse scroll wheel for zoom
         {
             AdjustZoom(Input.mouseScrollDelta.y * zoomSpeed);
+            
+            // Smoothly scale towards the target scale
+            transform.DOScale(targetScale, zoomSmoothing).SetEase(Ease.OutQuad);
         }
-
-        // Smoothly scale towards the target scale
-        transform.DOScale(targetScale, zoomSmoothing).SetEase(Ease.OutQuad);
     }
 
     private void AdjustZoom(float increment)

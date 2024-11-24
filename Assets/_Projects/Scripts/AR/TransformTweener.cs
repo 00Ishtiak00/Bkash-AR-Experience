@@ -13,19 +13,27 @@ public class TransformTweener : MonoBehaviour
     public float duration = 1f; // Duration of the tween
     public Ease easeType = Ease.Linear; // Type of easing for the tween
     
-    public WorldCanvasButtonManager WorldCanvasButtonManager;
+    public ButtonTween ButtonTween; // Reference to the TransferTweener script
+    //public WorldCanvasButtonManager WorldCanvasButtonManager;
 
     private void Start()
+    {
+       
+    }
+
+    public void TweenMap()
     {
         if (targetTransform != null)
         {
             // Tween only the Z-axis
-            targetTransform.DOMoveZ(targetZPosition, duration).SetEase(easeType).OnComplete(WorldCanvasButtonManager.BringButtonsForward);
+            targetTransform.DOMoveZ(targetZPosition, duration).SetEase(easeType);
         }
         else
         {
             Debug.LogWarning("Target Transform is not assigned.");
         }
     }
+
+   
     
 }

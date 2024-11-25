@@ -12,6 +12,7 @@ public class FlexibleAnimator : MonoBehaviour
         Floating,
         LeftRight,
         ZAxisRotation, // New animation type
+        ScaleInOut, // New animation type
         Both
     }
 
@@ -37,6 +38,11 @@ public class FlexibleAnimator : MonoBehaviour
     public Transform[] rotationTargets;    // Array of GameObjects to rotate
     public float rotationSpeed = 180f;     // Rotation speed (degrees per second)
 
+    [Header("Scale In-Out Animation Settings")]
+    public Transform scaleTarget;        // Reference to the Transform to scale
+    public Vector3 scaleInSize = new Vector3(1.2f, 1.2f, 1.2f); // Scale-up size
+    public float scaleDuration = 1f;     // Time for one scale-in and scale-out cycle
+    
     private void Start()
     {
         // Check animation type and start animations accordingly
@@ -58,6 +64,11 @@ public class FlexibleAnimator : MonoBehaviour
         if (animationType == AnimationType.ZAxisRotation)
         {
             AnimateZAxisRotation();
+        }
+        
+        if (animationType == AnimationType.ScaleInOut || animationType == AnimationType.Both)
+        {
+            AnimateScaleInOut();
         }
     }
 
@@ -112,5 +123,14 @@ public class FlexibleAnimator : MonoBehaviour
                     .SetLoops(-1, LoopType.Restart); // Continuous rotation
             }
         }
+    }
+    
+    private void AnimateScaleInOut()
+    {
+        if (scaleTarget == null) return;
+
+        scaleTarget.DOScale(scaleInSize, scaleDuration / 2f)
+            .SetEase(Ease.InOutSine)
+            .SetLoops(-1, LoopType.Yoyo); // Scale up and down in a Yoyo loop
     }
 }

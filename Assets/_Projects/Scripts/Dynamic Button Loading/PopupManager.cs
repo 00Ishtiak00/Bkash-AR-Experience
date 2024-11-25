@@ -4,13 +4,22 @@ using DG.Tweening; // Import DoTween namespace
 
 public class PopupManager : MonoBehaviour
 {
+    [Header("Panels")]
     [SerializeField] private GameObject popupPanel; // The reusable popup panel
+    [SerializeField] private GameObject instructionHand; // The reusable popup panel
     [SerializeField] private Image popupImage; // Image component in the popup
+    
+    [Header("Buttons")]
     [SerializeField] private Button closeButton; // Button to close the popup
     [SerializeField] private Button deepLinkButton; // Button to redirect to URL
+    [SerializeField] private Button xButton; // Button to redirect to URL
+    
+    [Header("Audio")]
     [SerializeField] private AudioSource audioSource; // Audio source for playing clips
     [SerializeField] private AudioClip audioClip; // Audio source for playing clips
+    
     [SerializeField] private ButtonDataList buttonDataList; // Reference to the ScriptableObject
+    
     [SerializeField] private string commonDeepLinkURL = "https://example.com"; // Common URL for all buttons
     [SerializeField] private float animationDuration = 0.5f; // Duration of the tween
 
@@ -26,6 +35,7 @@ public class PopupManager : MonoBehaviour
 
         // Add close button listener
         closeButton.onClick.AddListener(ClosePopup);
+        xButton.onClick.AddListener(ClosePopup);
 
         // Add the deep link action once (since all buttons share the same URL)
         deepLinkButton.onClick.RemoveAllListeners();
@@ -34,6 +44,7 @@ public class PopupManager : MonoBehaviour
         if (audioSource != null && audioClip != null)
         {
             audioSource.clip = audioClip;
+            audioSource.loop = true;
             audioSource.Play();
         }
     }
@@ -54,6 +65,18 @@ public class PopupManager : MonoBehaviour
 
         // Set the image
         popupImage.sprite = data.image;
+        
+        
+        // Stop the audio and deactivate the specified GameObject
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        if (instructionHand != null)
+        {
+            instructionHand.SetActive(false);
+        }
+        
 
         // Play the audio
         audioSource.clip = data.audioClip;

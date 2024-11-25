@@ -9,6 +9,7 @@ public class PopupManager : MonoBehaviour
     [SerializeField] private Button closeButton; // Button to close the popup
     [SerializeField] private Button deepLinkButton; // Button to redirect to URL
     [SerializeField] private AudioSource audioSource; // Audio source for playing clips
+    [SerializeField] private AudioClip audioClip; // Audio source for playing clips
     [SerializeField] private ButtonDataList buttonDataList; // Reference to the ScriptableObject
     [SerializeField] private string commonDeepLinkURL = "https://example.com"; // Common URL for all buttons
     [SerializeField] private float animationDuration = 0.5f; // Duration of the tween
@@ -29,6 +30,12 @@ public class PopupManager : MonoBehaviour
         // Add the deep link action once (since all buttons share the same URL)
         deepLinkButton.onClick.RemoveAllListeners();
         deepLinkButton.onClick.AddListener(() => OpenDeepLink());
+        
+        if (audioSource != null && audioClip != null)
+        {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
     }
 
     public void OnButtonClicked(int buttonIndex)

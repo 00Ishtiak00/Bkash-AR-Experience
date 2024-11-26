@@ -100,7 +100,7 @@ public class DragPinchZoom : MonoBehaviour
 
     private void HandleDrag()
     {
-        if (isZooming) return; // Skip drag if zooming is active
+        if (isZooming || Input.touchCount == 2) return; // Skip drag if zooming is active or if there are two touch points
 
         // For touch drag
         if (Input.touchCount == 1)

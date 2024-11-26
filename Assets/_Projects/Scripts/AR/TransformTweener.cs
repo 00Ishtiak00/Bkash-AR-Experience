@@ -14,6 +14,8 @@ public class TransformTweener : MonoBehaviour
     public Ease easeType = Ease.Linear; // Type of easing for the tween
     
     public WaveEffectGrouped WaveEffectGrouped;
+
+    public GameObject InstructionHand;
     
     //public ButtonTween ButtonTween; // Reference to the TransferTweener script
     //public WorldCanvasButtonManager WorldCanvasButtonManager;
@@ -33,6 +35,7 @@ public class TransformTweener : MonoBehaviour
             targetTransform.DOLocalMoveZ(targetZPosition, duration).SetEase(easeType).OnComplete(() =>
             {
                 WaveEffectGrouped.StartWaveAnimation();
+                InstructionHand.SetActive(true);
                 Debug.Log("Tween completed!");
             });
             //WaveEffectGrouped.StartWaveAnimation();

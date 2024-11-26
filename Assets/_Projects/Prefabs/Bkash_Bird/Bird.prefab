@@ -129,7 +129,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 9939572007fb26747919431946af5395, type: 3}
   - {fileID: 21300000, guid: 6d7062a95a918d640880f3a477789690, type: 3}
-  animationDuration: 1
+  animationDuration: 0.5
   floatTarget: {fileID: 0}
   floatDistance: 10
   floatDuration: 1
@@ -138,3 +138,6 @@ MonoBehaviour:
   leftRightDuration: 1
   rotationTargets: []
   rotationSpeed: 180
+  scaleTarget: {fileID: 0}
+  scaleInSize: {x: 1.2, y: 1.2, z: 1.2}
+  scaleDuration: 1

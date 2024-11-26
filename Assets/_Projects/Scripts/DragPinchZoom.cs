@@ -1,23 +1,31 @@
 using UnityEngine;
-using DG.Tweening; // Include DoTween namespace
+using DG.Tweening;
+using UnityEngine.InputSystem;
+using TouchPhase = UnityEngine.TouchPhase; // Include DoTween namespace
 
 public class DragPinchZoom : MonoBehaviour
 {
     [Header("Zoom Settings")]
     public float minFov = 15f; // Minimum Field of View
     public float maxFov = 90f; // Maximum Field of View
-    public float zoomSpeed = 10f; // Speed of zoom
+    public float zoomSpeed = 0.1f; // Speed multiplier for zoom
     public float zoomSmoothness = 0.25f; // Smoothing factor for zoom
+    public float zoomDelay = 0.1f; // Delay before zoom starts (in seconds)
 
     [Header("Drag Settings")]
     public Vector2 xAxisLimits = new Vector2(-10f, 10f); // Limits for X-axis movement
     public Vector2 yAxisLimits = new Vector2(-5f, 5f); // Limits for Y-axis movement
-    public float dragSpeed = 0.5f; // Speed of drag
+    public float dragSpeed = 10f; // Drag sensitivity multiplier
     public float dragSmoothness = 0.25f; // Smoothing factor for drag
 
     private Camera cam;
     private Vector3 dragTargetPosition;
     private float targetFov;
+
+    private bool isZooming; // Flag to indicate active zooming
+    private float lastZoomTime; // Timer to delay zoom activation
+    
+    private Vector2 touch0PrevPosition, touch1PrevPosition; // Store previous touch positions
 
     void Start()
     {
@@ -46,25 +54,42 @@ public class DragPinchZoom : MonoBehaviour
 
     private void HandleZoom()
     {
-        // For touch input (pinch gesture)
         if (Input.touchCount == 2)
         {
             Touch touch0 = Input.GetTouch(0);
             Touch touch1 = Input.GetTouch(1);
 
-            // Calculate the difference in distance between the two touches
-            float previousDistance = (touch0.position - touch0.deltaPosition - (touch1.position - touch1.deltaPosition)).magnitude;
-            float currentDistance = (touch0.position - touch1.position).magnitude;
+            // Check for delay before starting zoom
+            if (Time.time - lastZoomTime < zoomDelay) return;
+            lastZoomTime = Time.time;
 
-            float distanceDifference = previousDistance - currentDistance;
+            // Store previous touch positions
+            if (touch0.phase == TouchPhase.Began || touch1.phase == TouchPhase.Began)
+            {
+                touch0PrevPosition = touch0.position;
+                touch1PrevPosition = touch1.position;
+            }
 
-            AdjustFieldOfView(distanceDifference * zoomSpeed * Time.deltaTime);
-        }
-        // For mouse scroll (WebGL)
-        else if (Input.mouseScrollDelta.y != 0)
-        {
-            float scrollAmount = Input.mouseScrollDelta.y;
-            AdjustFieldOfView(-scrollAmount * zoomSpeed);
+            // Calculate distance between the two touches
+            float previousDistance = Vector2.Distance(touch0PrevPosition, touch1PrevPosition);
+            float currentDistance = Vector2.Distance(touch0.position, touch1.position);
+
+            // Determine if the touches are moving apart (zoom in) or coming together (zoom out)
+            if (Mathf.Abs(currentDistance - previousDistance) > 10f) // Threshold for zoom to activate
+            {
+                if (currentDistance > previousDistance) // Fingers moving apart
+                {
+                    AdjustFieldOfView(-zoomSpeed); // Zoom in
+                }
+                else // Fingers moving together
+                {
+                    AdjustFieldOfView(zoomSpeed); // Zoom out
+                }
+            }
+
+            // Update previous positions for the next frame
+            touch0PrevPosition = touch0.position;
+            touch1PrevPosition = touch1.position;
         }
     }
 
@@ -75,6 +100,8 @@ public class DragPinchZoom : MonoBehaviour
 
     private void HandleDrag()
     {
+        if (isZooming) return; // Skip drag if zooming is active
+
         // For touch drag
         if (Input.touchCount == 1)
         {
@@ -83,7 +110,7 @@ public class DragPinchZoom : MonoBehaviour
             if (touch.phase == TouchPhase.Moved)
             {
                 Vector3 deltaPosition = touch.deltaPosition;
-                UpdateDragTarget(deltaPosition);
+                UpdateDragTarget(deltaPosition * dragSpeed * 0.01f); // Scaled for mobile responsiveness
             }
         }
         // For mouse drag (WebGL)
@@ -99,8 +126,8 @@ public class DragPinchZoom : MonoBehaviour
         Vector3 newPosition = dragTargetPosition;
 
         // Adjust the target position based on delta input
-        newPosition.x = Mathf.Clamp(newPosition.x + delta.x * Time.deltaTime, xAxisLimits.x, xAxisLimits.y);
-        newPosition.y = Mathf.Clamp(newPosition.y + delta.y * Time.deltaTime, yAxisLimits.x, yAxisLimits.y);
+        newPosition.x = Mathf.Clamp(newPosition.x + delta.x, xAxisLimits.x, xAxisLimits.y);
+        newPosition.y = Mathf.Clamp(newPosition.y + delta.y, yAxisLimits.x, yAxisLimits.y);
 
         dragTargetPosition = newPosition;
     }

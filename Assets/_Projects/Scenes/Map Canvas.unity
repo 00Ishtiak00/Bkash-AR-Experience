@@ -179,7 +179,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 10000
-  field of view: 60
+  field of view: 20.9
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 243427996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: -211, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,13 +224,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebeffcd2ef0d75419d80de4a4491d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFov: 15
+  minFov: 20
   maxFov: 60
-  zoomSpeed: 10
+  zoomSpeed: 5
   zoomSmoothness: 0.25
-  xAxisLimits: {x: -10, y: 10}
-  yAxisLimits: {x: -5, y: 5}
-  dragSpeed: 1
+  zoomDelay: 0.1
+  xAxisLimits: {x: -400, y: 400}
+  yAxisLimits: {x: -200, y: 450}
+  dragSpeed: 50
   dragSmoothness: 0.25
 --- !u!114 &279590029 stripped
 MonoBehaviour:
@@ -2022,7 +2023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupPanel: {fileID: 1694307625}
-  instructionHand: {fileID: 0}
+  instructionHand: {fileID: 3009270167856329886}
   popupImage: {fileID: 279590029}
   closeButton: {fileID: 1210326308}
   deepLinkButton: {fileID: 1164322985}

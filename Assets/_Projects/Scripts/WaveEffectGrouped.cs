@@ -22,6 +22,7 @@ public class WaveEffectGrouped: MonoBehaviour
         // Store the initial scale of each object
         StoreInitialScales();
 
+        InvokeRepeating(nameof(StartWaveAnimation), 0, 5f);
         // Start the wave animation
         //StartWaveAnimation();
     }

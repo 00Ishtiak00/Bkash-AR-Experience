@@ -21,11 +21,20 @@ public class WebCamFeed : MonoBehaviour
         // Check if there are cameras available
         if (WebCamTexture.devices.Length > 0)
         {
-            // Use the first available camera
-            WebCamDevice device = WebCamTexture.devices[0];
+            WebCamDevice rearCamera = WebCamTexture.devices[0];
+
+            // Find the rear camera
+            foreach (WebCamDevice device in WebCamTexture.devices)
+            {
+                if (device.isFrontFacing == false)
+                {
+                    rearCamera = device;
+                    break;
+                }
+            }
 
             // Initialize WebCamTexture with low resolution
-            webCamTexture = new WebCamTexture(device.name, targetWidth, targetHeight);
+            webCamTexture = new WebCamTexture(rearCamera.name, targetWidth, targetHeight);
 
             // Assign the texture to the RawImage
             rawImage.texture = webCamTexture;

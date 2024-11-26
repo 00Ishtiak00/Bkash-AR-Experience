@@ -38,8 +38,8 @@ public class Glow : MonoBehaviour
         firstSequence.OnComplete(() =>
         {
             transferTweener.TweenMap();
-            SetImageTransparencyToZero();
-            //PlayLoopingSequence();
+            //SetImageTransparencyToZero();
+            PlayLoopingSequence();
         });
 
         firstSequence.Play();

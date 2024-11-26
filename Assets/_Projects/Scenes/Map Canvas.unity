@@ -2071,22 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageComponent: {fileID: 5319069095444209657}
-  sprites:
-  - {fileID: 21300000, guid: 9f7be2bbc6a78df439e16bd8baf2cb91, type: 3}
-  - {fileID: 21300000, guid: 9225d19f893ff1448a568b88f547132a, type: 3}
-  - {fileID: 21300000, guid: b1d222d574204634e9c679d270298fed, type: 3}
-  - {fileID: 21300000, guid: 2f8d64cf6a09f4a44b804918baa6c41e, type: 3}
-  - {fileID: 21300000, guid: 30222bbbf50fdea40b333ffe3d5b46f9, type: 3}
-  - {fileID: 21300000, guid: 265e45ca488349b4e89653828161be85, type: 3}
-  - {fileID: 21300000, guid: 6d2184f2e2b063b40b162c6446e413e9, type: 3}
-  - {fileID: 21300000, guid: f63b5989e85383b459a77daf36c976b5, type: 3}
-  - {fileID: 21300000, guid: 9996e52ec8f497c4daf7a1b26080c00f, type: 3}
-  - {fileID: 21300000, guid: 79e2db757444b214dab756ec910c3975, type: 3}
-  - {fileID: 21300000, guid: b19a2ce96a6f1ba4898a6da1fb201186, type: 3}
-  - {fileID: 21300000, guid: b5c22c53d180ec445b36db8e9bca92b3, type: 3}
-  - {fileID: 21300000, guid: cdbf4379fad332745a70c61732da588d, type: 3}
-  - {fileID: 21300000, guid: df3442594448a5b46856faab8590b13b, type: 3}
-  - {fileID: 21300000, guid: f5e59f2fa6c181f4293bc049fcee2f65, type: 3}
+  sprites: []
   animationDuration: 1
   transferTweener: {fileID: 6167505519961299502}
 --- !u!114 &889820412418296364
@@ -9111,7 +9096,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8855376951837170267}
   m_Father: {fileID: 9185561661318828217}
@@ -11220,7 +11205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 360ea5d0f3e462242b80534e206047ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e90fa50218385a24fbd49d1282ed3fb5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11646,7 +11631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735631181675461637, guid: 8ffc4dbe9d0cf1744bc5eb33731a1a01, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17083,7 +17068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &8346520178462632359
 GameObject:
   m_ObjectHideFlags: 0
@@ -18290,14 +18275,14 @@ RectTransform:
   m_GameObject: {fileID: 7802788777415284743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4180025453897009468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13, y: 108}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8865520369249825332
@@ -19023,8 +19008,8 @@ RectTransform:
   m_Children:
   - {fileID: 7728444193874684753}
   - {fileID: 5374127744192807007}
-  - {fileID: 4180025453897009468}
   - {fileID: 5807414116499213136}
+  - {fileID: 4180025453897009468}
   - {fileID: 1747972839845865832}
   m_Father: {fileID: 8320157511054013873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

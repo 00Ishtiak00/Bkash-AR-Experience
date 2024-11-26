@@ -155,7 +155,7 @@ Camera:
   m_GameObject: {fileID: 243427996}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -226,10 +226,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minFov: 15
   maxFov: 60
-  zoomSpeed: 5
+  zoomSpeed: 2
   zoomSmoothness: 0.25
   zoomDelay: 0.1
-  xAxisLimits: {x: -400, y: 400}
+  xAxisLimits: {x: -300, y: 300}
   yAxisLimits: {x: -200, y: 450}
   dragSpeed: 50
   dragSmoothness: 0.25
@@ -5145,7 +5145,7 @@ RectTransform:
   m_GameObject: {fileID: 846658783072441515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6168235267823628906}
@@ -5153,7 +5153,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.00012207031}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2269134487688113662
 RectTransform:

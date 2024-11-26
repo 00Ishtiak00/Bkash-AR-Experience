@@ -3183,7 +3183,7 @@ PrefabInstance:
       objectReference: {fileID: 1418316339}
     - target: {fileID: 2902459398855407740, guid: d0fc140a8350c764380f3ea7d5449962, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3011848593249749165, guid: d0fc140a8350c764380f3ea7d5449962, type: 3}
       propertyPath: popupManager
@@ -3205,6 +3205,10 @@ PrefabInstance:
       propertyPath: popupManager
       value: 
       objectReference: {fileID: 1418316339}
+    - target: {fileID: 4171910031671742908, guid: d0fc140a8350c764380f3ea7d5449962, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4184325339568172316, guid: d0fc140a8350c764380f3ea7d5449962, type: 3}
       propertyPath: popupManager
       value: 

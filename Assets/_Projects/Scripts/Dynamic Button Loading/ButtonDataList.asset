@@ -124,4 +124,4 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 17406acb76f371048ad3c6a2f956fa17, type: 3}
     audioClip: {fileID: 8300000, guid: 2fa93456a6c964c48911557b2ed076df, type: 3}
   - image: {fileID: 21300000, guid: 3729e26154fce774aae559cf5b484b02, type: 3}
-    audioClip: {fileID: 8300000, guid: 771901c04042a644697b35a8767950b1, type: 3}
+    audioClip: {fileID: 8300000, guid: c018c687ac81d8844a5a24bf80698119, type: 3}

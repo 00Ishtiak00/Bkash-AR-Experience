@@ -20,12 +20,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Projects/Scenes/Animation_Scene Backup.unity
     guid: 05786979bbf5a6e44ae8b8b54993a48e
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Projects/Scenes/Map Canvas.unity
     guid: c80e7f42e833aa54b9d1360188aa0ea4
   - enabled: 0
     path: Assets/MarksAssets/DeviceCameraWebGL/Example/Scenes/DeviceCameraWebGL.unity
     guid: 1c3eebfd9e880334eb280d56ea636130
+  - enabled: 1
+    path: Assets/_Projects/Scenes/ZoomAnd Pinch.unity
+    guid: 73329cbbeb2e2ab439c0eefd5eab6f03
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

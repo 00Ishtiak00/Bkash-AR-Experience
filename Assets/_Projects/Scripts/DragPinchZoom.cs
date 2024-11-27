@@ -114,7 +114,7 @@ public class DragPinchZoom : MonoBehaviour
             }
         }
         // For mouse drag (WebGL)
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0)) 
         {
             Vector3 mouseDelta = new Vector3(-Input.GetAxis("Mouse X"), -Input.GetAxis("Mouse Y"), 0);
             UpdateDragTarget(mouseDelta * dragSpeed);

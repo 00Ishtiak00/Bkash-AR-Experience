@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 243427997}
   - component: {fileID: 243428000}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main Camera(DontDelete)
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1646,7 +1646,7 @@ GameObject:
   - component: {fileID: 1184368507}
   - component: {fileID: 1184368506}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas(DontDelete)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1826,54 +1826,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239142805}
   m_CullTransparentMesh: 0
---- !u!1 &1291335364
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1291335365}
-  - component: {fileID: 1291335366}
-  m_Layer: 0
-  m_Name: WebCamFeed
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1291335365
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291335364}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1291335366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291335364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159fce0a49d4dbe409b57ce3c31d2b89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rawImage: {fileID: 7342741443401745045}
-  aspectRatioFitter: {fileID: 430221728434713470}
-  targetWidth: 320
-  targetHeight: 240
 --- !u!224 &1499115218 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2276090982647278846, guid: 5001ffac6b288f94bac82b0836cea1a8, type: 3}
@@ -2107,7 +2059,7 @@ GameObject:
   - component: {fileID: 1943973633}
   - component: {fileID: 1943973632}
   m_Layer: 0
-  m_Name: callbacks
+  m_Name: callbacks(Dont Delete)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2294,38 +2246,10 @@ MonoBehaviour:
   deepLinkButton: {fileID: 1164322985}
   xButton: {fileID: 445182880}
   audioSource: {fileID: 659023734}
-  audioClip: {fileID: 8300000, guid: 94dacff38a8456246a52677b03d0fc82, type: 3}
+  audioClip: {fileID: 8300000, guid: 04017b72eabb5d94ea26a6f8df35ab39, type: 3}
   buttonDataList: {fileID: 11400000, guid: 0441937290e126646987a27f32be638c, type: 2}
   commonDeepLinkURL: https://example.com
   animationDuration: 0.5
---- !u!114 &430221728434713470 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2635765785897570638, guid: b359f0b0b1daa74469099eb41855fc9d, type: 3}
-  m_PrefabInstance: {fileID: 2364669621984738546}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2136478355307945852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6168791095791695404}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e78f576f8a71ee47abaff86409ed34d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recordButton: {fileID: 0}
-  stopButton: {fileID: 0}
-  screenshotButton: {fileID: 0}
-  shareButton: {fileID: 0}
-  statusText: {fileID: 0}
 --- !u!1001 &2364669621984738546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2370,6 +2294,14 @@ PrefabInstance:
       propertyPath: popupManager
       value: 
       objectReference: {fileID: 393494170668230205}
+    - target: {fileID: 1701594244334393934, guid: b359f0b0b1daa74469099eb41855fc9d, type: 3}
+      propertyPath: sprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701594244334393934, guid: b359f0b0b1daa74469099eb41855fc9d, type: 3}
+      propertyPath: 'sprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9665438a17b35dc40a9dd5f7c62fc215, type: 3}
     - target: {fileID: 1838421421572623243, guid: b359f0b0b1daa74469099eb41855fc9d, type: 3}
       propertyPath: popupManager
       value: 
@@ -2607,7 +2539,8 @@ PrefabInstance:
       value: SpawnElement
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5094442847020269895, guid: b359f0b0b1daa74469099eb41855fc9d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b359f0b0b1daa74469099eb41855fc9d, type: 3}
@@ -2625,12 +2558,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasRect: {fileID: 1499115218}
   birdPrefab: {fileID: 8350268700122940461, guid: 77d2ad9bb86bb3e4ca0071df58482831, type: 3}
-  birdCount: 3
+  birdCount: 2
   minMoveDuration: 2
   maxMoveDuration: 2.5
   spawnYOffset: 5
-  minSpawnDelay: 0.5
-  maxSpawnDelay: 2
+  minSpawnDelay: 2
+  maxSpawnDelay: 5
 --- !u!1001 &3893108475524723454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2852,7 +2785,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7403799046844624994}
   - component: {fileID: 393494170668230205}
-  - component: {fileID: 2136478355307945852}
   - component: {fileID: 3753540947156180383}
   m_Layer: 0
   m_Name: Manager
@@ -2861,17 +2793,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7342741443401745045 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2310286200574664875, guid: b359f0b0b1daa74469099eb41855fc9d, type: 3}
-  m_PrefabInstance: {fileID: 2364669621984738546}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7403799046844624994
 Transform:
   m_ObjectHideFlags: 0
@@ -2899,6 +2820,5 @@ SceneRoots:
   - {fileID: 2364669621984738546}
   - {fileID: 994235958}
   - {fileID: 7403799046844624994}
-  - {fileID: 1291335365}
   - {fileID: 5532781303301531654}
   - {fileID: 3893108475524723454}

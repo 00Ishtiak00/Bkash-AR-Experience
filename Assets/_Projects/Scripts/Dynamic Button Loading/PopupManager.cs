@@ -24,6 +24,7 @@ public class PopupManager : MonoBehaviour
 
     private RectTransform popupRectTransform;
 
+    [SerializeField]private ARDragZoom ARDragZoom;
     private void Start()
     {
         // Get RectTransform of the popup panel
@@ -50,6 +51,10 @@ public class PopupManager : MonoBehaviour
 
     public void OnButtonClicked(int buttonIndex)
     {
+        if (ARDragZoom.isDragging)
+        {
+            return;
+        }
         if (buttonIndex < 0 || buttonIndex >= buttonDataList.buttonData.Count)
         {
             Debug.LogError("Invalid button index.");

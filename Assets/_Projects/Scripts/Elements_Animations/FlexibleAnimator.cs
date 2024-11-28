@@ -45,6 +45,7 @@ public class FlexibleAnimator : MonoBehaviour
     
     private void Start()
     {
+        
         // Check animation type and start animations accordingly
         if (animationType == AnimationType.AnimateSprite || animationType == AnimationType.Both)
         {

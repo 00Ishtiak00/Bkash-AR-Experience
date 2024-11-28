@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Assertions.Comparers;
@@ -19,7 +20,7 @@ public class ARDragZoom : MonoBehaviour
     private Camera mainCamera;
     private Vector3 dragStartWorldPos;         // World position when drag starts
     private bool isZooming = false;            // Is the user performing a zoom action
-    private bool isDragging = false;           // Is the user performing a drag action
+    public bool isDragging = false;           // Is the user performing a drag action
 
     [SerializeField]private float time;
     
@@ -27,6 +28,8 @@ public class ARDragZoom : MonoBehaviour
 
     [Header("Script References")]
     [SerializeField] private GraphicRaycaster graphicRaycaster; // Reference to the GraphicRaycaster component
+    
+    
     void Start()
     {
         mainCamera = Camera.main; // Cache the main camera
@@ -57,6 +60,9 @@ public class ARDragZoom : MonoBehaviour
 
     void Update()
     {
+        if (!touchInteractionsEnabled)
+            return; // If disabled, skip further processing
+
         if (Input.touchCount == 1 && !isZooming)
         {
             HandleSingleFingerDrag();
@@ -249,6 +255,7 @@ public class ARDragZoom : MonoBehaviour
     private void ResetStates()
     {
         isZooming = false;
+        //DOVirtual.DelayedCall(0.2f, () => isDragging = false);
         isDragging = false;
     }
 }

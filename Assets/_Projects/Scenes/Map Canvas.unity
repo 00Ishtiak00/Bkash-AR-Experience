@@ -2913,6 +2913,7 @@ MonoBehaviour:
   buttonDataList: {fileID: 11400000, guid: 0441937290e126646987a27f32be638c, type: 2}
   commonDeepLinkURL: https://example.com
   animationDuration: 0.5
+  ARDragZoom: {fileID: 6918611779650245185}
 --- !u!114 &399076115843804078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9213,7 +9214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.010300219, y: 0.0198}
+  m_AnchoredPosition: {x: 0.010300219, y: 0.02031}
   m_SizeDelta: {x: 220, y: 510.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3878691688257126004
@@ -12861,6 +12862,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7651219810131433110, guid: 8ffc4dbe9d0cf1744bc5eb33731a1a01, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651219810131433110, guid: 8ffc4dbe9d0cf1744bc5eb33731a1a01, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651219810131433110, guid: 8ffc4dbe9d0cf1744bc5eb33731a1a01, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651219810131433110, guid: 8ffc4dbe9d0cf1744bc5eb33731a1a01, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1920
+      objectReference: {fileID: 0}
     - target: {fileID: 7735631181675461637, guid: 8ffc4dbe9d0cf1744bc5eb33731a1a01, type: 3}
       propertyPath: m_Name
       value: Canvas_Popup
@@ -16069,13 +16086,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d12e9ad17beb754d94f820c75121cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomSpeed: 0.05
+  zoomSpeed: 0.01
   minScale: 0.5
   maxScale: 3
   zoomThreshold: 2
   zoomTransitionDuration: 0.2
-  dragThreshold: 5
+  dragThreshold: 0.1
   dragSpeed: 0.01
+  isDragging: 0
   time: 10
   touchInteractionsEnabled: 1
   graphicRaycaster: {fileID: 938322732123100099}

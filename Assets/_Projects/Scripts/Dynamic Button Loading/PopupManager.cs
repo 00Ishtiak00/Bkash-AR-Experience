@@ -6,7 +6,6 @@ public class PopupManager : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private GameObject popupPanel; // The reusable popup panel
-    [SerializeField] private GameObject instructionHand; // The reusable popup panel
     [SerializeField] private Image popupImage; // Image component in the popup
     
     [Header("Buttons")]
@@ -71,10 +70,6 @@ public class PopupManager : MonoBehaviour
         if (audioSource.isPlaying)
         {
             audioSource.Stop();
-        }
-        if (instructionHand != null)
-        {
-            instructionHand.SetActive(false);
         }
         
 

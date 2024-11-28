@@ -1,5 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Assertions.Comparers;
+using UnityEngine.UI;
 
 public class ARDragZoom : MonoBehaviour
 {
@@ -19,9 +21,38 @@ public class ARDragZoom : MonoBehaviour
     private bool isZooming = false;            // Is the user performing a zoom action
     private bool isDragging = false;           // Is the user performing a drag action
 
+    [SerializeField]private float time;
+    
+    [SerializeField]private bool touchInteractionsEnabled = true; // Flag to enable/disable touch interactions
+
+    [Header("Script References")]
+    [SerializeField] private GraphicRaycaster graphicRaycaster; // Reference to the GraphicRaycaster component
     void Start()
     {
         mainCamera = Camera.main; // Cache the main camera
+        DisableTouchInteractions(); // Disable touch interactions by default
+        Invoke(nameof(EnableTouchInteractions), time); // Call EnableTouchInteractions after 5 seconds
+    }
+    
+    
+    /// <summary>
+    /// Disables all touch interactions.
+    /// </summary>
+    public void DisableTouchInteractions()
+    {
+        touchInteractionsEnabled = false;
+        graphicRaycaster.enabled = false; // Disable the GraphicRaycaster
+        ResetStates(); // Reset states to ensure no ongoing interactions
+    }
+
+    /// <summary>
+    /// Enables all touch interactions.
+    /// </summary>
+    public void EnableTouchInteractions()
+    {
+        touchInteractionsEnabled = true;
+        graphicRaycaster.enabled = true; // Enable the GraphicRaycaster
+        
     }
 
     void Update()

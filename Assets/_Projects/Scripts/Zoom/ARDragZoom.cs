@@ -29,6 +29,8 @@ public class ARDragZoom : MonoBehaviour
     [Header("Script References")]
     [SerializeField] private GraphicRaycaster graphicRaycaster; // Reference to the GraphicRaycaster component
     
+    // Flag to enable/disable interactions
+    private bool isEnabled = true;
     
     void Start()
     {
@@ -86,17 +88,17 @@ public class ARDragZoom : MonoBehaviour
 
         if (touch.phase == TouchPhase.Began)
         {
-            isDragging = true;
             dragStartWorldPos = GetWorldPositionFromTouch(touch.position);
         }
 
-        if (isDragging && touch.phase == TouchPhase.Moved)
+        if (touch.phase == TouchPhase.Moved)
         {
             Vector3 currentWorldPos = GetWorldPositionFromTouch(touch.position);
             Vector3 dragDelta = currentWorldPos - dragStartWorldPos;
 
             if (dragDelta.magnitude > dragThreshold)
             {
+                isDragging = true;
                 DragObject(dragDelta);
                 dragStartWorldPos = currentWorldPos; // Update for the next frame
             }
@@ -257,5 +259,21 @@ public class ARDragZoom : MonoBehaviour
         isZooming = false;
         //DOVirtual.DelayedCall(0.2f, () => isDragging = false);
         isDragging = false;
+    }
+    
+    /// <summary>
+    /// Disables zooming and dragging functionality.
+    /// </summary>
+    public void DisableInteraction()
+    {
+        isEnabled = false; // Prevent drag and zoom
+    }
+
+    /// <summary>
+    /// Enables zooming and dragging functionality.
+    /// </summary>
+    public void EnableInteraction()
+    {
+        isEnabled = true; // Re-enable drag and zoom
     }
 }

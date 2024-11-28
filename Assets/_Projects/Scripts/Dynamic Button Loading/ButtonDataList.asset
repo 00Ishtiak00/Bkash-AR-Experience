@@ -96,7 +96,7 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: dd8b2babbeb839f498a87ed915ffde0e, type: 3}
     audioClip: {fileID: 8300000, guid: b9d5fdbbc63d6894aa36c5bd38590b69, type: 3}
   - image: {fileID: 21300000, guid: 455351a795d414043956a9df1565131b, type: 3}
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 53a8e010b429ef84f87ea8b1b4c7fd94, type: 3}
   - image: {fileID: 21300000, guid: 18ad124cec329b148b4cf5c20d2d78cf, type: 3}
     audioClip: {fileID: 8300000, guid: 542dffd8b1b9ba74bbb3187135462de4, type: 3}
   - image: {fileID: 21300000, guid: 674f3cc74f74ba9419f457047a65f151, type: 3}

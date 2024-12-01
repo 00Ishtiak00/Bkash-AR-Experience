@@ -64,18 +64,25 @@ public class CameraHandAnimation : MonoBehaviour
         // Step 2: Fade in the hand
         sequence.AppendCallback(() => handObject.SetActive(true)); // Activate hand object
         sequence.Join(handObject.GetComponent<CanvasGroup>().DOFade(1, fadeDuration).From(0)); // Fade in hand object
+        sequence.AppendCallback(() => HandAnimation()); // Call hand animation
+        sequence.AppendInterval(0.5f); // Add a delay of 0.5 seconds
+
 
         // Step 3: Move to Position B
         sequence.Append(mainCamera.transform.DOMove(positionB, transitionDuration).SetEase(Ease.InOutQuad));
+        sequence.AppendCallback(() => HandAnimation()); // Call hand animation
+        sequence.AppendInterval(0.5f); // Add a delay of 0.5 seconds
 
-        // Step 4: Move to Position C
+        // Step 4: Move to Position C and call hand animation
         sequence.Append(mainCamera.transform.DOMove(positionC, transitionDuration).SetEase(Ease.InOutQuad));
+        sequence.AppendCallback(() => HandAnimation()); // Call hand animation
+        sequence.AppendInterval(0.5f); // Add a delay of 0.5 seconds
 
         
-        // Step 5: Fade out the hand and set FOV back to 60
-        sequence.AppendCallback(() => handObject.GetComponent<CanvasGroup>().DOFade(0, fadeDuration)); // Fade out hand
+        // Step 5: Add a delay before fading out the hand
+        sequence.AppendInterval(1f); // Add a delay of 1 second (adjust as needed)
+        sequence.Append(handObject.GetComponent<CanvasGroup>().DOFade(0, fadeDuration)); // Fade out hand
         sequence.AppendCallback(() => handObject.SetActive(false)); // Deactivate hand object
-        //sequence.Append(mainCamera.DOFieldOfView(fovFinal, transitionDuration).SetEase(Ease.InOutQuad));
 
         // Step 6: Reset camera position and FOV to (0, 0, 0) and 60 simultaneously
         sequence.Append(mainCamera.transform.DOMove(Vector3.zero, transitionDuration).SetEase(Ease.InOutQuad));

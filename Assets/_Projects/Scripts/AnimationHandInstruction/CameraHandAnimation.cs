@@ -1,5 +1,6 @@
 using UnityEngine;
-using DG.Tweening; // Make sure you have DOTween imported and set up in your project
+using DG.Tweening;
+using UnityEngine.UI; // Make sure you have DOTween imported and set up in your project
 
 public class CameraHandAnimation : MonoBehaviour
 {
@@ -20,6 +21,19 @@ public class CameraHandAnimation : MonoBehaviour
     public float fadeDuration = 0.5f;
 
     private bool isAnimating = false; // Flag to track animation state
+    
+    public enum AnimationType
+    {
+        None,
+        AnimateSprite,
+    }
+
+    [Header("General Settings")]
+    public AnimationType animationType; // Select animation type in the Inspector
+    [Header("Sprite Animation Settings")]
+    public Image imageComponent;         // Reference to the UI Image component
+    public Sprite[] sprites;             // Array of sprites for animation frames
+    public float animationDuration = 1f; // Total animation time for one loop
     
     [SerializeField] private ARDragZoom ARDragZoom; // Reference to the ARDragZoom script
     private void Start()
@@ -66,5 +80,32 @@ public class CameraHandAnimation : MonoBehaviour
         // Step 6: Reset camera position and FOV to (0, 0, 0) and 60 simultaneously
         sequence.Append(mainCamera.transform.DOMove(Vector3.zero, transitionDuration).SetEase(Ease.InOutQuad));
         sequence.Join(mainCamera.DOFieldOfView(fovFinal, transitionDuration).SetEase(Ease.InOutQuad)); // Reset FOV to 60
+    }
+
+    [ContextMenu("HandAnimation")]
+    public void HandAnimation()
+    {
+        // Check animation type and start animations accordingly
+        if (animationType == AnimationType.AnimateSprite)
+        {
+            AnimateSprites();
+        }
+        
+    }
+    private void AnimateSprites()
+    {
+        if (sprites.Length == 0 || imageComponent == null) return;
+
+        // Calculate frame interval based on number of sprites and animation duration
+        float frameDuration = animationDuration / sprites.Length;
+
+        // Create a sequence for sprite animation with infinite looping
+        Sequence spriteSequence = DOTween.Sequence();
+        foreach (Sprite sprite in sprites)
+        {
+            spriteSequence.AppendCallback(() => imageComponent.sprite = sprite);
+            spriteSequence.AppendInterval(frameDuration);
+        }
+        //spriteSequence.SetLoops(-1); // Loop the sprite sequence indefinitely
     }
 }

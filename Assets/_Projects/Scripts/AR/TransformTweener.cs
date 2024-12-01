@@ -19,7 +19,7 @@ public class TransformTweener : MonoBehaviour
     public WaveEffectGrouped WaveEffectGrouped;
     public CameraHandAnimation CameraHandAnimation;
     
-    
+    public GameObject HandInstruction;
     
     //public ButtonTween ButtonTween; // Reference to the TransferTweener script
     //public WorldCanvasButtonManager WorldCanvasButtonManager;
@@ -41,12 +41,21 @@ public class TransformTweener : MonoBehaviour
                 WaveEffectGrouped.StartWaveAnimation();
                 Debug.Log("Tween completed!");
                 CameraHandAnimation.PlayAnimationSequence();
+                Invoke(nameof(HideInstruction), 10f);
             });
             //WaveEffectGrouped.StartWaveAnimation();
         }
         else
         {
             Debug.LogWarning("Target Transform is not assigned.");
+        }
+    }
+    
+    public void HideInstruction()
+    {
+        if (HandInstruction != null)
+        {
+            HandInstruction.SetActive(false);
         }
     }
 

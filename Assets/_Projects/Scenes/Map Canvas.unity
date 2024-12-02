@@ -9948,6 +9948,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 958299926576675647, guid: 5001ffac6b288f94bac82b0836cea1a8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f6c86b5e8cabcf4d9e0578945f4e381, type: 3}
     - target: {fileID: 2276090982647278846, guid: 5001ffac6b288f94bac82b0836cea1a8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10033,7 +10037,8 @@ PrefabInstance:
       value: Canvas_Bkash_Bird
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9029024903550178973, guid: 5001ffac6b288f94bac82b0836cea1a8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5001ffac6b288f94bac82b0836cea1a8, type: 3}

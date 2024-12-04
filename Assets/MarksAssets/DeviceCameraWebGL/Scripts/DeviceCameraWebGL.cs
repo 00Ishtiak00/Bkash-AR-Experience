@@ -106,7 +106,7 @@ namespace MarksAssets.DeviceCameraWebGL {
 
 		public static void startFrontCamera(Action<status> callback = null) {
 			#if UNITY_WEBGL && !UNITY_EDITOR
-				string constraints = $"{{\"video\": {{\"width\": {{\"min\": 1280, \"ideal\": 1920, \"max\": 2560}},\"height\": {{\"min\": 720, \"ideal\": 1080, \"max\": 1440}}, \"facingMode\": \"user\"}}}}";
+				string constraints = "{\"video\": {\"width\": {\"min\": 1280, \"ideal\": 1920, \"max\": 2560},\"height\": {\"min\": 720, \"ideal\": 1080, \"max\": 1440}, \"facingMode\": \"environment\"}, \"audio\": false}";
 				//string constraints = $"{{\"video\": {{ \"width\": {{ \"ideal\": 4096 }}, \"height\": {{ \"ideal\": 2160 }} , \"facingMode\": \"user\" }}}}";
 				if (callback != null) {
 					startCallbackEvent += callback;
@@ -119,8 +119,9 @@ namespace MarksAssets.DeviceCameraWebGL {
 
 		public static void startRearCamera(Action<status> callback = null) {
 			#if UNITY_WEBGL && !UNITY_EDITOR
-				string constraints = $"{{\"video\": {{\"width\": {{\"min\": 1280, \"ideal\": 1920, \"max\": 2560}},\"height\": {{\"min\": 720, \"ideal\": 1080, \"max\": 1440}}, \"facingMode\": \"environment\"}}}}";
+			string constraints = "{\"video\": {\"width\": {\"min\": 1280, \"ideal\": 1920, \"max\": 2560},\"height\": {\"min\": 720, \"ideal\": 1080, \"max\": 1440}, \"facingMode\": \"environment\"}, \"audio\": false}";
 				//string constraints = $"{{\"video\": {{ \"width\": {{ \"ideal\": 4096 }}, \"height\": {{ \"ideal\": 2160 }} , \"facingMode\": \"environment\" }}}}";
+				
 				if (callback != null) {
 					startCallbackEvent += callback;
 					DeviceCameraWebGL_start(startCallback, constraints, selector, in canUpdateTexture);
@@ -129,6 +130,13 @@ namespace MarksAssets.DeviceCameraWebGL {
 				}
 			#endif
 		}
+		
+		public static void startVideoOnly(Action<status> callback = null)
+		{
+			string constraints = "{\"video\": true, \"audio\": false}";
+			DeviceCameraWebGL.start(constraints, callback);
+		}
+
 
 		public static void stop(Action callback = null) {
 			#if UNITY_WEBGL && !UNITY_EDITOR

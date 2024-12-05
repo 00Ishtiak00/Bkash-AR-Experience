@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; // Import DoTween namespace
+using DG.Tweening;
+using UnityEngine.Serialization; // Import DoTween namespace
 
 public class PopupManager : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class PopupManager : MonoBehaviour
     [SerializeField] private Button deepLinkButton; // Button to redirect to URL
     [SerializeField] private Button xButton; // Button to redirect to URL
     
+    [FormerlySerializedAs("audioSource")]
     [Header("Audio")]
-    [SerializeField] private AudioSource audioSource; // Audio source for playing clips
-    [SerializeField] private AudioClip audioClip; // Audio source for playing clips
+    [SerializeField] private AudioSource audioSourceBg; // Audio source for playing clips
+    [FormerlySerializedAs("audioClip")] [SerializeField] private AudioClip audioClipBg; // Audio source for playing clips
+    
+    private AudioSource audioSourceForButton; // Audio source for playing clips
     
     [SerializeField] private ButtonDataList buttonDataList; // Reference to the ScriptableObject
     
@@ -41,15 +45,9 @@ public class PopupManager : MonoBehaviour
         deepLinkButton.onClick.RemoveAllListeners();
         deepLinkButton.onClick.AddListener(() => OpenDeepLink());
         
-        if (audioSource != null && audioClip != null)
-        {
-            audioSource.clip = audioClip;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
     }
 
-    public void OnButtonClicked(int buttonIndex)
+    public void OnButtonClicked(int buttonIndex, AudioSource buttonAudioSource)
     {
         if (ARDragZoom.isDragging)
         {
@@ -66,21 +64,13 @@ public class PopupManager : MonoBehaviour
         
         Debug.Log($"Button Pressed: Index = {buttonIndex}, Image = {data.image.name}");
 
-
         // Set the image
         popupImage.sprite = data.image;
         
-        
-        // Stop the audio and deactivate the specified GameObject
-        if (audioSource.isPlaying)
-        {
-            audioSource.Stop();
-        }
-        
+        audioSourceForButton = buttonAudioSource;
 
-        // Play the audio
-        audioSource.clip = data.audioClip;
-        audioSource.Play();
+        audioSourceBg.pitch = 0;
+        audioSourceForButton.pitch = 1;
 
         // Show and animate the popup
         ShowPopup();
@@ -103,7 +93,8 @@ public class PopupManager : MonoBehaviour
             .OnComplete(() =>
             {
                 popupPanel.SetActive(false); // Hide after animation
-                audioSource.Stop(); // Stop audio if playing
+                audioSourceForButton.pitch = 0;
+                //audioSource.Stop(); // Stop audio if playing
             });
     }
 

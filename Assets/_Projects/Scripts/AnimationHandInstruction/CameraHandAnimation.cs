@@ -22,6 +22,8 @@ public class CameraHandAnimation : MonoBehaviour
 
     private bool isAnimating = false; // Flag to track animation state
     
+    public GameObject startRecordButton;
+    
     public enum AnimationType
     {
         None,
@@ -86,7 +88,10 @@ public class CameraHandAnimation : MonoBehaviour
 
         // Step 6: Reset camera position and FOV to (0, 0, 0) and 60 simultaneously
         sequence.Append(mainCamera.transform.DOMove(Vector3.zero, transitionDuration).SetEase(Ease.InOutQuad));
-        sequence.Join(mainCamera.DOFieldOfView(fovFinal, transitionDuration).SetEase(Ease.InOutQuad)); // Reset FOV to 60
+        sequence.Join(mainCamera.DOFieldOfView(fovFinal, transitionDuration).SetEase(Ease.InOutQuad)).OnComplete(() =>
+        {
+            startRecordButton.SetActive(true);
+        }); // Reset FOV to 60
     }
 
     [ContextMenu("HandAnimation")]

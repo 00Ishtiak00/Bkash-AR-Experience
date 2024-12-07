@@ -21,7 +21,7 @@ public class TransformTweener : MonoBehaviour
     
     public GameObject HandInstruction;
 
-    public GameObject startRecordButton;
+    
     
     //public ButtonTween ButtonTween; // Reference to the TransferTweener script
     //public WorldCanvasButtonManager WorldCanvasButtonManager;
@@ -58,7 +58,6 @@ public class TransformTweener : MonoBehaviour
         if (HandInstruction != null)
         {
             HandInstruction.SetActive(false);
-            startRecordButton.SetActive(true);
         }
     }
 }

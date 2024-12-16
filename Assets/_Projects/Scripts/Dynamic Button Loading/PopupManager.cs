@@ -120,5 +120,6 @@ public class PopupManager : MonoBehaviour
     private void OpenDeepLink()
     {
         Application.OpenURL(commonDeepLinkURL); // Open the common URL
+        GoogleAnalyticsManager.TrackEvent("DeepLink", "Button", "DeepLink", 1); // Track the event
     }
 }
